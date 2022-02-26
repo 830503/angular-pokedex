@@ -42,13 +42,7 @@ export class PokemonListComponent implements OnInit {
         });
       });
   }
-  // the searchbar works not well
-  // getSearch(value: string) {
-  //   const filter = this.pokemons.filter((res: any) => {
-  //     return !res.name.indexOf(value.toLocaleLowerCase());
-  //   });
-  //   this.pokemons = filter;
-  // }
+  // the searchbar
   getSearch(value: string | number) {
     if (value == '') {
       this.isSearching = false;
