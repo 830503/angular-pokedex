@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as e from 'express';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class PokemonListComponent implements OnInit {
   offset: number;
   limit: number = 8;
 
-  searchPoke: any[] = [];
+  searchPokes: any[] = [];
   isSearching: boolean = false;
   constructor(private dataService: DataService) {}
 
@@ -36,16 +37,31 @@ export class PokemonListComponent implements OnInit {
             .subscribe((uniqueResponse: any) => {
               this.pokemons.push(uniqueResponse);
               this.pokemons.sort((a, b) => (a.id > b.id ? 1 : -1));
-              console.log(this.pokemons);
+              // console.log(this.pokemons);
             });
         });
       });
   }
   // the searchbar works not well
-  getSearch(value: string) {
-    const filter = this.pokemons.filter((res: any) => {
-      return !res.name.indexOf(value.toLocaleLowerCase());
-    });
-    this.pokemons = filter;
+  // getSearch(value: string) {
+  //   const filter = this.pokemons.filter((res: any) => {
+  //     return !res.name.indexOf(value.toLocaleLowerCase());
+  //   });
+  //   this.pokemons = filter;
+  // }
+  getSearch(value: string | number) {
+    if (value == '') {
+      this.isSearching = false;
+    } else {
+      this.dataService.getMoreData(value).subscribe((uniqueResponse: any) => {
+        this.searchPokes.push(uniqueResponse);
+        console.log(this.searchPokes);
+      });
+      const filter = this.searchPokes.filter((res: any) => {
+        return !res.name.indexOf(value);
+      });
+      this.isSearching = true;
+      this.searchPokes = filter;
+    }
   }
 }

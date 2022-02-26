@@ -5,17 +5,18 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class DataService {
+  private baseUrl = 'https://pokeapi.co/api/v2/';
   constructor(private http: HttpClient) {}
 
   //get Pokemons
   getPokemons(limit: number, offset: number) {
     return this.http.get(
-      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+      `${this.baseUrl}pokemon?limit=${limit}&offset=${offset}`
     );
   }
 
   //get more pokemons data
-  getMoreData(name: string) {
-    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  getMoreData(pokemon: string | number) {
+    return this.http.get(`${this.baseUrl}pokemon/${pokemon}`);
   }
 }
