@@ -42,29 +42,10 @@ export class PokemonListComponent implements OnInit {
       });
   }
   // the searchbar works not well
-  // getSearch(value: string) {
-  //   const filter = this.pokemons.filter((res: any) => {
-  //     return !res.name.indexOf(value.toLocaleLowerCase());
-  //   });
-  //   this.pokemons = filter;
-  // }
   getSearch(value: string) {
-    this.offset = 100;
-    this.dataService
-      .getPokemons(this.limit, this.offset)
-      .subscribe((response: any) => {
-        // console.log(response);
-        this.totalPages = response.count;
-
-        response.results.forEach((result: { name: string }) => {
-          this.dataService
-            .getMoreData(result.name)
-            .subscribe((uniqueResponse: any) => {
-              this.pokemons.push(uniqueResponse);
-              this.pokemons.sort((a, b) => (a.id > b.id ? 1 : -1));
-              console.log(this.pokemons);
-            });
-        });
-      });
+    const filter = this.pokemons.filter((res: any) => {
+      return !res.name.indexOf(value.toLocaleLowerCase());
+    });
+    this.pokemons = filter;
   }
 }
