@@ -1,0 +1,15 @@
+<div class="container">
+  <input
+    type="text"
+    class="search"
+    placeholder="Search Pokemon....."
+    #input
+    (keyup.enter)="search(input.value)"
+  />
+  <img
+    (click)="search(input.value)"
+    class="searchBtn"
+    src="../../../assets/pokeball.png"
+    alt="Search Icon"
+  />
+</div>

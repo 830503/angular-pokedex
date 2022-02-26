@@ -1,0 +1,45 @@
+<app-search-bar (emitSearch)="getSearch($event)"></app-search-bar>
+
+<div class="pokemon-grid" *ngIf="!isSearching">
+  <div
+    class="box"
+    *ngFor="
+      let pokemon of pokemons
+        | paginate
+          : { itemsPerPage: 8, currentPage: page, totalItems: totalPages }
+    "
+  >
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+    <h3># {{ pokemon.id }} {{ pokemon.name }}</h3>
+    <p><b>Type: </b>{{ pokemon.types[0].type.name }}</p>
+    <p><b>Height: </b>{{ pokemon.height }}</p>
+    <p><b>Moves: </b></p>
+    <p>{{ pokemon.moves[0].move.name }}</p>
+    <p>{{ pokemon.moves[1].move.name }}</p>
+    <p>Stats:</p>
+    <p>{{ pokemon.stats[0].stat.name }}: {{ pokemon.stats[0].base_stat }}</p>
+  </div>
+  <!-- searching -->
+  <!-- <div
+    class="box"
+    **ngIf="isSearching"
+    *ngFor="
+      let pokemon of pokemons
+        | paginate
+          : { itemsPerPage: 20, currentPage: page, totalItems: totalPages }
+    "
+  >
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+    <h3># {{ pokemon.id }} {{ pokemon.name }}</h3>
+    <p><b>Type: </b>{{ pokemon.types[0].type.name }}</p>
+    <p><b>Height: </b>{{ pokemon.height }}</p>
+    <p><b>Moves: </b></p>
+    <p>{{ pokemon.moves[0].move.name }}</p>
+    <p>{{ pokemon.moves[1].move.name }}</p>
+    <p>Stats:</p>
+    <p>{{ pokemon.stats[0].stat.name }}: {{ pokemon.stats[0].base_stat }}</p>
+  </div> -->
+</div>
+<pagination-controls
+  (pageChange)="page = $event; pokemons = []; getPokemons()"
+></pagination-controls>
