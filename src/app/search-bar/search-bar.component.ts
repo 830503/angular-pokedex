@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
   @Output() emitSearch: EventEmitter<any> = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}

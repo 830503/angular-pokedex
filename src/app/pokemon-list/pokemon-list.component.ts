@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as e from 'express';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -58,4 +57,5 @@ export class PokemonListComponent implements OnInit {
       this.searchPokes = filter;
     }
   }
+  onDetail() {}
 }

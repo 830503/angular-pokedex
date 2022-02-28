@@ -8,6 +8,7 @@
         | paginate
           : { itemsPerPage: 8, currentPage: page, totalItems: totalPages }
     "
+    (click)="onDetail()"
   >
     <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
     <h3># {{ pokemon.id }} {{ pokemon.name | titlecase }}</h3>
