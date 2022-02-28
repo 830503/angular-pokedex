@@ -1,0 +1,15 @@
+<div class="pokemon-grid">
+  <div class="box">
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+    <h3># {{ pokemon.id }} {{ pokemon.name | titlecase }}</h3>
+    <p *ngFor="let type of pokemon.types">
+      {{ type.type.name | titlecase }}
+    </p>
+    <p><b>Height: </b>{{ pokemon.height }}</p>
+    <p><b>Moves: </b></p>
+    <p>{{ pokemon.moves[0].move.name }}</p>
+    <p>{{ pokemon.moves[1].move.name }}</p>
+    <p>Stats:</p>
+    <p>{{ pokemon.stats[0].stat.name }}: {{ pokemon.stats[0].base_stat }}</p>
+  </div>
+</div>

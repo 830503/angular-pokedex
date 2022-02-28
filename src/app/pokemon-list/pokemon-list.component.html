@@ -8,7 +8,7 @@
         | paginate
           : { itemsPerPage: 8, currentPage: page, totalItems: totalPages }
     "
-    (click)="onDetail()"
+    (click)="onDetail(pokemon)"
   >
     <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
     <h3># {{ pokemon.id }} {{ pokemon.name | titlecase }}</h3>
@@ -24,7 +24,11 @@
   </div>
 </div>
 <div class="pokemon-grid" *ngIf="isSearching">
-  <div class="box" *ngFor="let searchPoke of searchPokes">
+  <div
+    class="box"
+    *ngFor="let searchPoke of searchPokes"
+    (click)="onDetail(searchPoke)"
+  >
     <img [src]="searchPoke.sprites.front_default" [alt]="searchPoke.name" />
     <h3># {{ searchPoke.id }} {{ searchPoke.name | titlecase }}</h3>
     <p *ngFor="let type of searchPoke.types">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -15,7 +17,10 @@ export class PokemonListComponent implements OnInit {
 
   searchPokes: any[] = [];
   isSearching: boolean = false;
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private bottomSheet: MatBottomSheet
+  ) {}
 
   ngOnInit(): void {
     this.getPokemons();
@@ -57,5 +62,7 @@ export class PokemonListComponent implements OnInit {
       this.searchPokes = filter;
     }
   }
-  onDetail() {}
+  onDetail(pokemon: string): void {
+    this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
+  }
 }
