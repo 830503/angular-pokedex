@@ -1,4 +1,4 @@
-<p>my-pokemon works!</p>
+<h1>My Pokemons</h1>
 <div class="box" *ngFor="let myPoke of myPokes">
-  <h1>{{ myPoke.name }}</h1>
+  <h1>{{ myPoke.name | titlecase }}</h1>
 </div>
