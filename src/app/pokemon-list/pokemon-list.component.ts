@@ -3,6 +3,7 @@ import { DataService } from '../service/data.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MyPokemonService } from '../service/my-pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -12,20 +13,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PokemonListComponent implements OnInit {
   pokemons: any[] = [];
   page: number = 1;
-  totalPages: number;
-  offset: number;
+  totalPages?: number;
+  offset?: number;
   limit: number = 8;
 
   searchPokes: any[] = [];
   isSearching: boolean = false;
   error = null;
 
-  myPokemons: any[] = [];
-
   constructor(
     private dataService: DataService,
     private bottomSheet: MatBottomSheet,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private myPokemon: MyPokemonService
   ) {}
 
   ngOnInit(): void {
@@ -80,8 +80,7 @@ export class PokemonListComponent implements OnInit {
     this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
   }
 
-  savePoke(myPokemon: string) {
-    this.myPokemons.push(myPokemon);
-    console.log(this.myPokemons);
+  savePoke(poke: string) {
+    this.myPokemon.savePoke(poke);
   }
 }

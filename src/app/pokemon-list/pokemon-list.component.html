@@ -1,7 +1,5 @@
 <app-search-bar (emitSearch)="getSearch($event)"></app-search-bar>
 
-<app-my-pokemon [myPokes]="myPokemons"> </app-my-pokemon>
-
 <div class="pokemon-grid" *ngIf="!isSearching">
   <div
     class="box"
@@ -24,16 +22,17 @@
   </div>
 </div>
 <div class="pokemon-grid" *ngIf="isSearching">
-  <div
-    class="box"
-    *ngFor="let searchPoke of searchPokes"
-    (click)="onDetail(searchPoke)"
-  >
+  <div class="box" *ngFor="let searchPoke of searchPokes">
     <img [src]="searchPoke.sprites.front_default" [alt]="searchPoke.name" />
     <h3># {{ searchPoke.id }} {{ searchPoke.name | titlecase }}</h3>
     <p *ngFor="let type of searchPoke.types">
       {{ type.type.name | titlecase }}
     </p>
+    <div class="button">
+      <button (click)="savePoke(searchPoke)">SAVE</button>
+      <button>Add to Wishlist</button>
+      <button (click)="onDetail(searchPoke)">Detail</button>
+    </div>
   </div>
 </div>
 
