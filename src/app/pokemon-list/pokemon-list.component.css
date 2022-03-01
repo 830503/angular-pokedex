@@ -20,13 +20,7 @@
   display: block;
   margin: 0 auto;
 }
-.error-box {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 15px;
-  color: white;
-}
+
 pagination-controls {
   text-align: center;
 }

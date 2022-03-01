@@ -12,6 +12,7 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { DataService } from './service/data.service';
+import { MyPokemonComponent } from './my-pokemon/my-pokemon.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DataService } from './service/data.service';
     PokemonListComponent,
     SearchBarComponent,
     PokemonDetailsComponent,
+    MyPokemonComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -19,9 +20,12 @@ export class PokemonListComponent implements OnInit {
   isSearching: boolean = false;
   error = null;
 
+  myPokemons: any[] = [];
+
   constructor(
     private dataService: DataService,
-    private bottomSheet: MatBottomSheet
+    private bottomSheet: MatBottomSheet,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +63,10 @@ export class PokemonListComponent implements OnInit {
           console.log(this.searchPokes);
         },
         (error) => {
-          this.error = error.message;
+          // this.error = error.message;
+          this.snackBar.open('Sorry, No pokemon funded', 'ok', {
+            duration: 5000,
+          });
         }
       );
       const filter = this.searchPokes.filter((res: any) => {
@@ -71,5 +78,10 @@ export class PokemonListComponent implements OnInit {
   }
   onDetail(pokemon: string): void {
     this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
+  }
+
+  savePoke(myPokemon: string) {
+    this.myPokemons.push(myPokemon);
+    console.log(this.myPokemons);
   }
 }
