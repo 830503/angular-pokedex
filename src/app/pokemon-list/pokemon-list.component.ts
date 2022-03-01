@@ -17,6 +17,8 @@ export class PokemonListComponent implements OnInit {
 
   searchPokes: any[] = [];
   isSearching: boolean = false;
+  error = null;
+
   constructor(
     private dataService: DataService,
     private bottomSheet: MatBottomSheet
@@ -51,10 +53,15 @@ export class PokemonListComponent implements OnInit {
     if (value == '') {
       this.isSearching = false;
     } else {
-      this.dataService.getMoreData(value).subscribe((uniqueResponse: any) => {
-        this.searchPokes.push(uniqueResponse);
-        console.log(this.searchPokes);
-      });
+      this.dataService.getMoreData(value).subscribe(
+        (uniqueResponse: any) => {
+          this.searchPokes.push(uniqueResponse);
+          console.log(this.searchPokes);
+        },
+        (error) => {
+          this.error = error.message;
+        }
+      );
       const filter = this.searchPokes.filter((res: any) => {
         return !res.name.indexOf(value);
       });

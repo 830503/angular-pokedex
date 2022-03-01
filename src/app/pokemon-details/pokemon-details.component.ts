@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-pokemon-details',

@@ -15,12 +15,6 @@
     <p *ngFor="let type of pokemon.types">
       {{ type.type.name | titlecase }}
     </p>
-    <!-- <p><b>Height: </b>{{ pokemon.height }}</p>
-    <p><b>Moves: </b></p>
-    <p>{{ pokemon.moves[0].move.name }}</p>
-    <p>{{ pokemon.moves[1].move.name }}</p>
-    <p>Stats:</p>
-    <p>{{ pokemon.stats[0].stat.name }}: {{ pokemon.stats[0].base_stat }}</p> -->
   </div>
 </div>
 <div class="pokemon-grid" *ngIf="isSearching">
@@ -34,16 +28,15 @@
     <p *ngFor="let type of searchPoke.types">
       {{ type.type.name | titlecase }}
     </p>
-    <!-- <p><b>Height: </b>{{ searchPoke.height }}</p>
-    <p><b>Moves: </b></p>
-    <p>{{ searchPoke.moves[0].move.name }}</p>
-    <p>{{ searchPoke.moves[1].move.name }}</p>
-    <p>Stats:</p>
-    <p>
-      {{ searchPoke.stats[0].stat.name }}: {{ searchPoke.stats[0].base_stat }}
-    </p> -->
   </div>
 </div>
+<div class="error-box" *ngIf="isSearching && error">
+  <div class="error-message">
+    <h1>Ops!! An error occurred!!!</h1>
+    <p>{{ error }}</p>
+  </div>
+</div>
+
 <pagination-controls
   *ngIf="!isSearching"
   (pageChange)="page = $event; pokemons = []; getPokemons()"
