@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../service/data.service';
+import { DataService } from '../../service/data.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MyPokemonService } from '../service/my-pokemon.service';
+import { MyPokemonService } from '../../service/my-pokemon.service';
+import { PokemonList } from 'src/app/model/poke-list.model';
+import { PokemonDetails } from 'src/app/model/poke-detail.model';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -28,7 +30,7 @@ export class PokemonListComponent implements OnInit {
     private myPokemon: MyPokemonService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getPokemons();
   }
 
@@ -76,11 +78,11 @@ export class PokemonListComponent implements OnInit {
       this.searchPokes = filter;
     }
   }
-  onDetail(pokemon: string): void {
+  onDetail(pokemon: any): void {
     this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
   }
 
-  savePoke(poke: string) {
+  savePoke(poke: any) {
     this.myPokemon.savePoke(poke);
   }
 }
