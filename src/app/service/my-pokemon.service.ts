@@ -7,10 +7,17 @@ import { PokemonDetails } from '../model/poke-detail.model';
 export class MyPokemonService {
   myPokemons: PokemonDetails[] = [];
 
+  constructor() {}
+
   savePoke(myPokemon: PokemonDetails) {
     this.myPokemons.push(myPokemon);
     console.log(this.myPokemons);
   }
-
-  constructor() {}
+  removePoke(myPokemon: PokemonDetails) {
+    this.myPokemons.forEach((value, index) => {
+      if (value == myPokemon) {
+        this.myPokemons.splice(index, 1);
+      }
+    });
+  }
 }

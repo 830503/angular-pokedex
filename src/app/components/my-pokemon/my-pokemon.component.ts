@@ -17,11 +17,16 @@ export class MyPokemonComponent implements OnInit {
     private bottomSheet: MatBottomSheet
   ) {
     this.myPokes = this.myPokemon.myPokemons;
-  }
-
-  onDetail(pokemon: PokemonDetails): void {
-    this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
+    this.myPokes.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
 
   ngOnInit(): void {}
+
+  removePoke(poke: PokemonDetails) {
+    this.myPokemon.removePoke(poke);
+  }
+
+  onDetail(pokemon: PokemonDetails) {
+    this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
+  }
 }

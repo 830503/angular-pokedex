@@ -5,6 +5,7 @@ import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.comp
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MyPokemonService } from '../../service/my-pokemon.service';
 import { PokemonDetails } from 'src/app/model/poke-detail.model';
+import { WishListService } from 'src/app/service/wish-list.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -26,7 +27,8 @@ export class PokemonListComponent implements OnInit {
     private dataService: DataService,
     private bottomSheet: MatBottomSheet,
     private snackBar: MatSnackBar,
-    private myPokemon: MyPokemonService
+    private myPokemon: MyPokemonService,
+    private wishList: WishListService
   ) {}
 
   ngOnInit() {
@@ -83,5 +85,9 @@ export class PokemonListComponent implements OnInit {
 
   savePoke(poke: PokemonDetails) {
     this.myPokemon.savePoke(poke);
+  }
+
+  saveList(poke: PokemonDetails) {
+    this.wishList.saveWish(poke);
   }
 }

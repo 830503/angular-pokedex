@@ -1,0 +1,14 @@
+<div class="pokemon-grid">
+  <div class="box" *ngFor="let myWish of myWishes">
+    <img [src]="myWish.sprites.front_default" [alt]="myWish.name" />
+    <h3>#{{ myWish.id }} {{ myWish.name | titlecase }}</h3>
+    <p *ngFor="let type of myWish.types">
+      {{ type.type.name | titlecase }}
+    </p>
+    <div class="button">
+      <button (click)="onSave(myWish)">Save</button>
+      <button>Remove</button>
+      <button (click)="onDetail(myWish)">Detail</button>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,3 @@
-<!-- <h1>My Pokemons</h1>
-<div class="box" *ngFor="let myPoke of myPokes">
-  <h1>{{ myPoke.name | titlecase }}</h1>
-</div> -->
 <div class="pokemon-grid">
   <div class="box" *ngFor="let myPoke of myPokes">
     <img [src]="myPoke.sprites.front_default" [alt]="myPoke.name" />
@@ -10,8 +6,7 @@
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <!-- <button (click)="savePoke(myPoke)">SAVE</button> -->
-      <button>Remove</button>
+      <button (click)="removePoke(myPoke)">Remove</button>
       <button (click)="onDetail(myPoke)">Detail</button>
     </div>
   </div>

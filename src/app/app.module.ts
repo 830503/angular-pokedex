@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { DataService } from './service/data.service';
 import { MyPokemonComponent } from './components/my-pokemon/my-pokemon.component';
+import { WishListComponent } from './components/wish-list/wish-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MyPokemonComponent } from './components/my-pokemon/my-pokemon.component
     SearchBarComponent,
     PokemonDetailsComponent,
     MyPokemonComponent,
+    WishListComponent,
   ],
   imports: [
     BrowserModule,
