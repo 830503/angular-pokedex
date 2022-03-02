@@ -3,7 +3,9 @@
     <div class="top-left">
       <h2>#{{ pokemon.id }} {{ pokemon.name | titlecase }}</h2>
       <p>
-        <b>Height: {{ pokemon.height }}</b>
+        <b>Height: {{ pokemon.height }}</b
+        ><br />
+        <b>Weight: {{ pokemon.weight }}</b>
       </p>
     </div>
     <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
@@ -25,8 +27,5 @@
       <p>{{ pokemon.stats[3].stat.name }}: {{ pokemon.stats[0].base_stat }}</p>
       <p>{{ pokemon.stats[4].stat.name }}: {{ pokemon.stats[0].base_stat }}</p>
     </div>
-  </div>
-  <div class="close-btn">
-    <a [routerLink]="['']">Home</a>
   </div>
 </div>
