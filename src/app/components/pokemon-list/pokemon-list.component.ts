@@ -70,6 +70,7 @@ export class PokemonListComponent implements OnInit {
           this.snackBar.open('Sorry, No pokemon funded', 'ok', {
             duration: 5000,
           });
+          // window.location.reload();
         }
       );
       const filter = this.searchPokes.filter((res: any) => {

@@ -27,6 +27,9 @@ export class WishListComponent implements OnInit {
   onSave(poke: PokemonDetails) {
     this.myPokemon.savePoke(poke);
   }
+  onRemove(poke: PokemonDetails) {
+    this.wishList.removeWish(poke);
+  }
 
   onDetail(pokemon: PokemonDetails) {
     this.bottomSheet.open(PokemonDetailsComponent, {

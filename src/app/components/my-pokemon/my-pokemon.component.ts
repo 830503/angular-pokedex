@@ -22,7 +22,7 @@ export class MyPokemonComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  removePoke(poke: PokemonDetails) {
+  onRemove(poke: PokemonDetails) {
     this.myPokemon.removePoke(poke);
   }
 

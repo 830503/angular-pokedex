@@ -13,4 +13,12 @@ export class WishListService {
     this.wishLists.push(wishList);
     console.log(this.wishLists);
   }
+  removeWish(wishList: PokemonDetails) {
+    this.wishLists.forEach((value, index) => {
+      if (value == wishList) {
+        this.wishLists.splice(index, 1);
+      }
+    });
+    console.log(this.wishLists);
+  }
 }
