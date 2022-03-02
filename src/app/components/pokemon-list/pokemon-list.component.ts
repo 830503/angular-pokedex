@@ -4,7 +4,6 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MyPokemonService } from '../../service/my-pokemon.service';
-import { PokemonList } from 'src/app/model/poke-list.model';
 import { PokemonDetails } from 'src/app/model/poke-detail.model';
 
 @Component({
@@ -13,7 +12,7 @@ import { PokemonDetails } from 'src/app/model/poke-detail.model';
   styleUrls: ['./pokemon-list.component.css'],
 })
 export class PokemonListComponent implements OnInit {
-  pokemons: any[] = [];
+  pokemons: PokemonDetails[] = [];
   page: number = 1;
   totalPages?: number;
   offset?: number;
@@ -78,11 +77,11 @@ export class PokemonListComponent implements OnInit {
       this.searchPokes = filter;
     }
   }
-  onDetail(pokemon: any): void {
+  onDetail(pokemon: PokemonDetails): void {
     this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
   }
 
-  savePoke(poke: any) {
+  savePoke(poke: PokemonDetails) {
     this.myPokemon.savePoke(poke);
   }
 }

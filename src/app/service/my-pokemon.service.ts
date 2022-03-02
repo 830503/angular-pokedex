@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
+import { PokemonDetails } from '../model/poke-detail.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MyPokemonService {
-  myPokemons: any[] = [];
+  myPokemons: PokemonDetails[] = [];
 
-  savePoke(myPokemon: string) {
+  savePoke(myPokemon: PokemonDetails) {
     this.myPokemons.push(myPokemon);
     console.log(this.myPokemons);
   }

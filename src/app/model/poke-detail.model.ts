@@ -3,20 +3,22 @@ export class PokemonDetails {
   name: string;
   height: number;
   weight: number;
-  abilities: string[];
-  types: string[];
-  moves: string[];
-  sprites: string;
+  abilities: any[];
+  types: any[];
+  moves: any[];
+  sprites: any;
+  stats: any[];
 
   constructor(
     id: number,
     name: string,
     height: number,
     weight: number,
-    abilities: string[],
-    types: string[],
-    moves: string[],
-    sprites: string
+    abilities: any[],
+    types: any[],
+    moves: any[],
+    sprites: any,
+    stats: any[]
   ) {
     this.id = id;
     this.name = name;
@@ -26,5 +28,6 @@ export class PokemonDetails {
     this.types = types;
     this.moves = moves;
     this.sprites = sprites;
+    this.stats = stats;
   }
 }
