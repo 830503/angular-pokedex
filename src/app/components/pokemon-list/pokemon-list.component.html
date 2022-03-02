@@ -6,31 +6,34 @@
     *ngFor="
       let pokemon of pokemons
         | paginate
-          : { itemsPerPage: 8, currentPage: page, totalItems: totalPages }
+          : { itemsPerPage: 8, currentPage: page, totalItems: totalPages };
+      trackBy: identify
     "
   >
     <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
     <h3>#{{ pokemon.id }} {{ pokemon.name | titlecase }}</h3>
-    <p *ngFor="let type of pokemon.types">
+    <p *ngFor="let type of pokemon.types; trackBy: identify">
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <button (click)="savePoke(pokemon)">SAVE</button>
+      <button (click)="savePoke(pokemon)">Save</button>
       <button (click)="saveList(pokemon)">Add to Wishlist</button>
       <button (click)="onDetail(pokemon)">Detail</button>
     </div>
   </div>
 </div>
 <div class="pokemon-grid" *ngIf="isSearching">
-  <div class="box" *ngFor="let searchPoke of searchPokes">
+  <div class="box" *ngFor="let searchPoke of searchPokes; trackBy: identify">
+    <span class="close" (click)="reload()">&times;</span>
+
     <img [src]="searchPoke.sprites.front_default" [alt]="searchPoke.name" />
     <h3># {{ searchPoke.id }} {{ searchPoke.name | titlecase }}</h3>
     <p *ngFor="let type of searchPoke.types">
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <button (click)="savePoke(searchPoke)">SAVE</button>
-      <button>Add to Wishlist</button>
+      <button (click)="savePoke(searchPoke)">Save</button>
+      <button (click)="saveList(searchPoke)">Add to Wishlist</button>
       <button (click)="onDetail(searchPoke)">Detail</button>
     </div>
   </div>

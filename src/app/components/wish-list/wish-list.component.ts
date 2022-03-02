@@ -38,4 +38,7 @@ export class WishListComponent implements OnInit {
       },
     });
   }
+  identify(index: number, item: PokemonDetails) {
+    return item.id;
+  }
 }

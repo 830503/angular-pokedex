@@ -24,9 +24,14 @@ export class MyPokemonComponent implements OnInit {
 
   onRemove(poke: PokemonDetails) {
     this.myPokemon.removePoke(poke);
+    console.log(this.myPokes);
   }
 
   onDetail(pokemon: PokemonDetails) {
     this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
+  }
+
+  identify(index: number, item: PokemonDetails) {
+    return item.id;
   }
 }

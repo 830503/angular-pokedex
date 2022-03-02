@@ -1,5 +1,5 @@
 <div class="pokemon-grid">
-  <div class="box" *ngFor="let myPoke of myPokes">
+  <div class="box" *ngFor="let myPoke of myPokes; trackBy: identify">
     <img [src]="myPoke.sprites.front_default" [alt]="myPoke.name" />
     <h3>#{{ myPoke.id }} {{ myPoke.name | titlecase }}</h3>
     <p *ngFor="let type of myPoke.types">

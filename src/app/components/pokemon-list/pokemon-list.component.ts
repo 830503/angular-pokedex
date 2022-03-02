@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MyPokemonService } from '../../service/my-pokemon.service';
 import { PokemonDetails } from 'src/app/model/poke-detail.model';
 import { WishListService } from 'src/app/service/wish-list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -28,8 +29,20 @@ export class PokemonListComponent implements OnInit {
     private bottomSheet: MatBottomSheet,
     private snackBar: MatSnackBar,
     private myPokemon: MyPokemonService,
-    private wishList: WishListService
-  ) {}
+    private wishList: WishListService,
+    private router: Router
+  ) {
+    this.router.navigate([], {
+      skipLocationChange: true,
+      // queryParamsHandling: 'merge',
+    });
+  }
+  reload() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
 
   ngOnInit() {
     this.getPokemons();
@@ -50,12 +63,14 @@ export class PokemonListComponent implements OnInit {
             .subscribe((uniqueResponse: any) => {
               this.pokemons.push(uniqueResponse);
               this.pokemons.sort((a, b) => (a.id > b.id ? 1 : -1));
-              // console.log(this.pokemons);
+              console.log(this.pokemons);
             });
         });
       });
   }
+
   // the searchbar
+
   getSearch(value: string | number) {
     if (value == '') {
       this.isSearching = false;
@@ -66,11 +81,11 @@ export class PokemonListComponent implements OnInit {
           console.log(this.searchPokes);
         },
         (error) => {
-          // this.error = error.message;
-          this.snackBar.open('Sorry, No pokemon funded', 'ok', {
-            duration: 5000,
-          });
-          // window.location.reload();
+          if (error.status == 404) {
+            this.snackBar.open('Sorry, No pokemon funded', 'ok', {
+              duration: 5000,
+            });
+          }
         }
       );
       const filter = this.searchPokes.filter((res: any) => {
@@ -80,6 +95,11 @@ export class PokemonListComponent implements OnInit {
       this.searchPokes = filter;
     }
   }
+
+  identify(index: number, item: PokemonDetails) {
+    return item.id;
+  }
+
   onDetail(pokemon: PokemonDetails): void {
     this.bottomSheet.open(PokemonDetailsComponent, { data: { pokemon } });
   }

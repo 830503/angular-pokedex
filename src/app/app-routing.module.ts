@@ -5,13 +5,17 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { WishListComponent } from './components/wish-list/wish-list.component';
 
 const routes: Routes = [
-  { path: 'list', component: PokemonListComponent },
+  {
+    path: 'list',
+    component: PokemonListComponent,
+    runGuardsAndResolvers: 'always',
+  },
   { path: 'my-pokemon', component: MyPokemonComponent },
   { path: 'wish-list', component: WishListComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

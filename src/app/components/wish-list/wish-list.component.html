@@ -1,5 +1,5 @@
 <div class="pokemon-grid">
-  <div class="box" *ngFor="let myWish of myWishes">
+  <div class="box" *ngFor="let myWish of myWishes; trackBy: identify">
     <img [src]="myWish.sprites.front_default" [alt]="myWish.name" />
     <h3>#{{ myWish.id }} {{ myWish.name | titlecase }}</h3>
     <p *ngFor="let type of myWish.types">
