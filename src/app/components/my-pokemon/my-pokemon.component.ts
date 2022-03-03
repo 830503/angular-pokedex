@@ -3,6 +3,7 @@ import { MyPokemonService } from '../../service/my-pokemon.service';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
 import { PokemonDetails } from 'src/app/model/poke-detail.model';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-my-pokemon',
@@ -14,7 +15,8 @@ export class MyPokemonComponent implements OnInit {
 
   constructor(
     private myPokemon: MyPokemonService,
-    private bottomSheet: MatBottomSheet
+    private bottomSheet: MatBottomSheet,
+    private snackBar: MatSnackBar
   ) {
     this.myPokes = this.myPokemon.myPokemons;
     this.myPokes.sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -24,7 +26,9 @@ export class MyPokemonComponent implements OnInit {
 
   onRemove(poke: PokemonDetails) {
     this.myPokemon.removePoke(poke);
-    console.log(this.myPokes);
+    this.snackBar.open('Pokemon was removed', 'ok', {
+      duration: 1000,
+    });
   }
 
   onDetail(pokemon: PokemonDetails) {

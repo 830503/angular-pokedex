@@ -107,9 +107,15 @@ export class PokemonListComponent implements OnInit {
 
   savePoke(poke: PokemonDetails) {
     this.myPokemon.savePoke(poke);
+    this.snackBar.open('Pokemon was saved', 'ok', {
+      duration: 1000,
+    });
   }
 
   saveList(poke: PokemonDetails) {
     this.wishList.saveWish(poke);
+    this.snackBar.open('Pokemon was added', 'ok', {
+      duration: 1000,
+    });
   }
 }

@@ -4,6 +4,7 @@ import { PokemonDetails } from 'src/app/model/poke-detail.model';
 import { MyPokemonService } from 'src/app/service/my-pokemon.service';
 import { WishListService } from 'src/app/service/wish-list.service';
 import { PokemonDetailsComponent } from '../pokemon-details/pokemon-details.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-wish-list',
@@ -16,7 +17,8 @@ export class WishListComponent implements OnInit {
   constructor(
     private wishList: WishListService,
     private bottomSheet: MatBottomSheet,
-    private myPokemon: MyPokemonService
+    private myPokemon: MyPokemonService,
+    private snackBar: MatSnackBar
   ) {
     this.myWishes = this.wishList.wishLists;
     this.myWishes.sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -26,9 +28,15 @@ export class WishListComponent implements OnInit {
 
   onSave(poke: PokemonDetails) {
     this.myPokemon.savePoke(poke);
+    this.snackBar.open('Pokemon was saved', 'ok', {
+      duration: 1000,
+    });
   }
   onRemove(poke: PokemonDetails) {
     this.wishList.removeWish(poke);
+    this.snackBar.open('Pokemon was removed', 'ok', {
+      duration: 1000,
+    });
   }
 
   onDetail(pokemon: PokemonDetails) {
