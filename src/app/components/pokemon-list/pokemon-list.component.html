@@ -16,9 +16,15 @@
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <button (click)="savePoke(pokemon)">Save</button>
-      <button (click)="saveList(pokemon)">Add to Wishlist</button>
-      <button (click)="onDetail(pokemon)">Detail</button>
+      <button mat-button color="primary" (click)="savePoke(pokemon)">
+        Save
+      </button>
+      <button mat-button color="primary" (click)="saveList(pokemon)">
+        Wishlist
+      </button>
+      <button mat-button color="primary" (click)="onDetail(pokemon)">
+        Detail
+      </button>
     </div>
   </div>
 </div>
@@ -33,9 +39,15 @@
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <button (click)="savePoke(searchPoke)">Save</button>
-      <button (click)="saveList(searchPoke)">Add to Wishlist</button>
-      <button (click)="onDetail(searchPoke)">Detail</button>
+      <button mat-button color="primary" (click)="savePoke(searchPoke)">
+        Save
+      </button>
+      <button mat-button color="primary" (click)="saveList(searchPoke)">
+        Add to Wishlist
+      </button>
+      <button mat-button color="primary" (click)="onDetail(searchPoke)">
+        Detail
+      </button>
     </div>
   </div>
 </div>

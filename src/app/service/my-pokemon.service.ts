@@ -12,6 +12,9 @@ export class MyPokemonService {
   savePoke(myPokemon: PokemonDetails) {
     this.myPokemons.push(myPokemon);
     console.log(this.myPokemons);
+    // this.snackBar.open('Sorry, No pokemon funded', 'ok', {
+    //   duration: 1000,
+    // });
   }
   removePoke(myPokemon: PokemonDetails) {
     this.myPokemons.forEach((value, index) => {

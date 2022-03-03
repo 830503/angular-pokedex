@@ -6,8 +6,10 @@
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <button (click)="onRemove(myPoke)">Remove</button>
-      <button (click)="onDetail(myPoke)">Detail</button>
+      <button mat-button color="warn" (click)="onRemove(myPoke)">Remove</button>
+      <button mat-button color="primary" (click)="onDetail(myPoke)">
+        Detail
+      </button>
     </div>
   </div>
 </div>

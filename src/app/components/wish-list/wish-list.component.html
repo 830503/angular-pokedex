@@ -6,9 +6,11 @@
       {{ type.type.name | titlecase }}
     </p>
     <div class="button">
-      <button (click)="onSave(myWish)">Save</button>
-      <button (click)="onRemove(myWish)">Remove</button>
-      <button (click)="onDetail(myWish)">Detail</button>
+      <button mat-button color="primary" (click)="onSave(myWish)">Save</button>
+      <button mat-button color="warn" (click)="onRemove(myWish)">Remove</button>
+      <button mat-button color="primary" (click)="onDetail(myWish)">
+        Detail
+      </button>
     </div>
   </div>
 </div>
