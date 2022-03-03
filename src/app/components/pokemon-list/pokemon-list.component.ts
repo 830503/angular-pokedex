@@ -81,6 +81,7 @@ export class PokemonListComponent implements OnInit {
           console.log(this.searchPokes);
         },
         (error) => {
+          this.error = error.message;
           if (error.status == 404) {
             this.snackBar.open('Sorry, No pokemon funded', 'ok', {
               duration: 5000,
