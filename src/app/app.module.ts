@@ -14,6 +14,7 @@ import { MaterialModule } from './material.module';
 import { DataService } from './service/data.service';
 import { MyPokemonComponent } from './components/my-pokemon/my-pokemon.component';
 import { WishListComponent } from './components/wish-list/wish-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { WishListComponent } from './components/wish-list/wish-list.component';
     PokemonDetailsComponent,
     MyPokemonComponent,
     WishListComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
